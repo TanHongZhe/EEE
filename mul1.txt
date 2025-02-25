@@ -1,0 +1,23 @@
+//R0 = OP1 
+//R1 = OP2 
+//R2, R3 = OP2_Shifted 
+//R4, R5 = Sum
+
+MOV R0, #10
+MOV R1, #128
+MOV R2, #0
+MOV R3, R1
+MOV R4, #0
+MOV R5, #0
+
+CMP R0, #0
+JEQ 10
+MOV R6, R0
+AND R6, #1
+JEQ 3
+ADD R5, R5, R3
+ADC R4, R4, R2 
+LSL R3, R3, #1 //1 bit phased out
+ADC R2, R2, R2 //LSL R2, #1 except + 1
+LSR R0, R0, #1 
+JMP -10
